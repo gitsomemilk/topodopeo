@@ -27,7 +27,7 @@ const placeCountry = country => {
     const countryPopulation = document.createElement('li');
     const countryRegio = document.createElement('li');
     const countryFlag = document.createElement('img');
-    const {name,population,region,flags} = country;
+    const {name, population, region, flags} = country;
 
     // countryFlags maken
     countryFlag.setAttribute('src', flags.png);
@@ -45,11 +45,11 @@ const placeCountry = country => {
 
     // countryRegio maken
 
-    countryRegio.textContent= region;
+    countryRegio.textContent = region;
     countryRegio.classList.add(getRegionColor(region))
     countryList.appendChild(countryRegio);
 }
-
+// Async Functions voor part 1
 
 async function fetchData() {
     const URI = 'https://restcountries.com/v2/all/'
@@ -57,10 +57,9 @@ async function fetchData() {
 
     try {
         const {data} = await axios.get(URI);
-        const sortedCountry = data.sort((a,b)=> a.population - b.population);
-        sortedCountry.map(country=> placeCountry(country))
-        console.log(data);
-        console.log(data[0].name);
+        const sortedCountry = data.sort((a, b) => a.population - b.population);
+        sortedCountry.map(country => placeCountry(country))
+
 
 
     } catch (error) {
@@ -69,11 +68,7 @@ async function fetchData() {
 
 }
 
-
-
-
-fetchData();
-
+fetchData()
 
 
 
